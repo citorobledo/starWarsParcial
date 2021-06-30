@@ -1,3 +1,119 @@
 import habitantes.*
 import planeta.*
 
+test "test-starwars" {
+	// personas
+	const julieta = new Persona(edad = 42)
+	const ana = new Atleta(edad = 25)
+	const rosa = new Atleta(edad = 45, tecnicasConocidas = 8)
+	const perla = new Atleta(edad = 28, tecnicasConocidas = 4, masaMuscular = 6)
+	const monica = new Docente(edad = 45, cantidadCursos =  6)
+	const luisa = new Docente(edad = 35, cantidadCursos =  1)
+	
+
+	assert.that(julieta.potencia() == 20)
+	assert.that(julieta.inteligencia() == 8)
+	assert.that(not julieta.esDestacado())
+	
+	assert.that(ana.potencia() == 28)
+	assert.that(ana.inteligencia() == 12)
+	assert.that( ana.esDestacado())
+	
+	assert.that(rosa.potencia() == 52)
+	assert.that(rosa.inteligencia() == 8)
+	assert.that( rosa.esDestacado())
+	
+	assert.that(perla.potencia() == 44)
+	assert.that(perla.inteligencia() == 12)
+	assert.that( not perla.esDestacado())
+	
+	assert.that(monica.potencia() == 20)
+	assert.that(monica.inteligencia() == 20)
+	assert.that( monica.esDestacado())
+	
+	assert.that(luisa.potencia() == 20)
+	assert.that(luisa.inteligencia() == 14)
+	assert.that(not  luisa.esDestacado())
+	
+	// planeta
+	
+	const triton = new Planeta()
+	
+	
+	triton.agregarHabitante(julieta)
+	triton.agregarHabitante(ana)
+	triton.agregarHabitante(rosa)
+	triton.agregarHabitante(perla)
+	triton.agregarHabitante(monica)
+	triton.agregarHabitante(luisa)
+	
+	assert.that(triton.delegacionDiplomatica().asSet() == #{ana, rosa , monica})
+	assert.that(triton.defensaInicial() == 2)
+	assert.that(not triton.esCulto() )
+	assert.that( triton.potenciaReal() == 184 )
+	
+	
+	
+	// test aparte
+	
+	perla.entrenar(15)
+	perla.aprenderTecnica()
+	
+	assert.that(perla.potencia() == 65)
+	assert.that( not perla.esDestacado())
+	
+	perla.aprenderTecnica()
+	assert.that( perla.esDestacado())
+
+
+
+
+
+	
+	
+//	assert.that(p1.leGusta(c1) )
+//	assert.that(not p1.estaEbria() )
+//	
+//	assert.throwsException{
+//	carpa2.ingresarACarpa(p1)}
+//	
+//	carpa1.ingresarACarpa(p1)
+//	carpa1.servirJarra(p1, 1)
+//	carpa2.ingresarACarpa(p3)
+//	carpa2.servirJarra(p3,1)
+//	carpa2.servirJarra(p3,1)
+//	carpa2.servirJarra(p3,1)
+//	//1
+//	assert.that(j3.contAlcohol() == 0.075 )
+//	//2
+//	
+//	assert.that( p1.alcholINgerido() == 0.1 )
+//	assert.that( p2.alcholINgerido() == 0.175 )
+//	//3
+//	assert.that( not p2.estaEbria()  )
+//	//4
+//	assert.that( p2.leGusta(c1) ) 
+//	//5 
+//	assert.that( not p2.quiereEntrar(carpa1) ) 
+//	assert.that(  p2.quiereEntrar(carpa2) ) 
+//	//6
+//	assert.that(carpa1.permitirIngreso(p2 ) )
+//	//7
+//	assert.that(not carpa1.puedeEntrar(p2 ) )
+//	//8
+//	carpa2.ingresarACarpa(p2 )
+//	assert.that(carpa2.cantPersonas() == 2 )
+//	
+//	//9
+//	carpa2.servirJarra(p2, 1 ) 
+//	assert.that(p2.jarrasCompradas().size() == 4 )
+//	//10
+//	
+//	assert.that(carpa2.ebriosEmpedernidos() == 1)
+//	assert.that(carpa1.ebriosEmpedernidos() == 0 )
+//	//11
+//	
+//	assert.that(not p1.esPatriota() )
+//	assert.that(not p2.esPatriota() )
+//	assert.that(not p3.esPatriota() )
+}
